@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GigFloww - Sign Up</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1rem;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .thank-you {
+      display: none;
+      text-align: center;
+      color: #28a745;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Join GigFloww</h2>
+    <form id="signupForm">
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email Address" required />
+      <select id="skill" required>
+        <option value="">Select Skill Category</option>
+        <option value="Web Development">Web Development</option>
+        <option value="Graphic Design">Graphic Design</option>
+        <option value="Content Writing">Content Writing</option>
+        <option value="Marketing">Marketing</option>
+      </select>
+      <input type="url" id="portfolio" placeholder="Portfolio Link (https://...)" required />
+      <button type="submit">Sign Up</button>
+    </form>
+    <p class="thank-you" id="thankYou">Thank you for signing up! 🚀</p>
+  </div>
+
+  <script>
+    const form = document.getElementById('signupForm');
+    const thankYou = document.getElementById('thankYou');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const skill = document.getElementById('skill').value;
+      const portfolio = document.getElementById('portfolio').value.trim();
+
+      if (!name || !email || !skill || !portfolio) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      if (!portfolio.startsWith('http://') && !portfolio.startsWith('https://')) {
+        alert('Portfolio link must start with http:// or https://');
+        return;
+      }
+
+      // Show thank-you message
+      form.style.display = 'none';
+      thankYou.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
